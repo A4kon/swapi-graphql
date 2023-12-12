@@ -8,9 +8,8 @@ import { GraphqlConfigInterface } from '../env/graphql/graphql.config.interface'
 export class GqlConfigService implements GqlOptionsFactory {
   constructor(private configService: ConfigService) {}
   createGqlOptions(): ApolloDriverConfig {
-    const graphqlConfig = this.configService.get(
-      'graphql',
-    ) as GraphqlConfigInterface;
+    const graphqlConfig =
+      this.configService.get<GraphqlConfigInterface>('graphql');
     return {
       autoSchemaFile: './schema.graphql',
       buildSchemaOptions: {
