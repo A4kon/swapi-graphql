@@ -10,8 +10,115 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model People {
+  id    Int     @id
+  birth_year String
+  eye_color  String
+  hair_color String
+  height  String
+  homeworld  String
+  mass  String
+  name  String
+  gender String
+  skin_color  String
+  created  String
+  edited String
+  url String
+  vehicles String[]
+  starships String[]
+  species String[]
+  films String[]
+}
+model Films {
+  id    Int     @id
+  title String
+  episode_id  Int
+  opening_crawl  String
+  director  String
+  producer  String
+  release_date  DateTime
+  species String[]
+  starships String[]
+  vehicles String[]
+  characters String[]
+  planets String[]
+  url String
+  created String
+  edited String
+}
+model Starships {
+  id    Int     @id
+  MGLT String
+  cargo_capacity String
+  consumables String
+  cost_in_credits String
+  created String
+  crew String
+  edited String
+  hyperdrive_rating String
+  length String
+  manufacturer String
+  max_atmosphering_speed String
+  model String
+  name String
+  passengers String
+  films String[]
+  pilots String[]
+  starship_class String
+  url String
+}
+
+model Vehicles {  
+    id    Int     @id  
+    cargo_capacity String
+    consumables String
+    cost_in_credits String
+    created String
+    crew String
+    edited String
+    length String
+    manufacturer String
+    max_atmosphering_speed String
+    model String
+    name String
+    passengers String
+    pilots String[]
+    films String[]
+    url String
+    vehicle_class String
+}
+model Species{
+    id    Int     @id
+    average_height String
+    average_lifespan String
+    classification String
+    created String
+    designation String
+    edited String
+    eye_colors String
+    hair_colors String
+    homeworld String?
+    language String
+    name String
+    people String[]
+    films String[]
+    skin_colors String
+    url String
+}
+model Planets {
+    id    Int     @id  
+    climate String
+    created String
+    diameter String
+    edited String
+    films String[]
+    gravity String
+    name String
+    orbital_period String
+    population String
+    residents String[]
+    rotation_period String
+    surface_water String
+    terrain String
+    url String
 }
