@@ -36,7 +36,8 @@ model Films {
   opening_crawl  String
   director  String
   producer  String
-  release_date  DateTime
+  // Type Bug In Swapi docs
+  release_date  String
   species String[]
   starships String[]
   vehicles String[]
