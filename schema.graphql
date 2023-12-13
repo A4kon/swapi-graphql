@@ -52,9 +52,16 @@ type FilmsModel {
   edited: String!
 }
 
+"""stats for film opeining words in all films"""
+type FilmOpeningsWordStats {
+  word: String
+  count: Int
+}
+
 type Query {
   updateCustomer(data: ListFilmsInput!): [FilmsModel!]!
   getFilmById(id: Int!): FilmsModel!
+  getFilmOpeningsWordStats: [FilmOpeningsWordStats!]!
 }
 
 input ListFilmsInput {

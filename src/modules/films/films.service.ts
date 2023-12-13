@@ -4,6 +4,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { DAY_IN_MS } from 'src/config/const';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
+import { words, toLower, countBy, map } from 'lodash';
+import { FilmOpeningsWordStats } from './films.model';
 
 @Injectable()
 export class FilmsService {
@@ -34,5 +36,22 @@ export class FilmsService {
 
     this.cacheManager.set(`f-${id}`, JSON.stringify(data), DAY_IN_MS);
     return data;
+  }
+
+  async getFilmOpeningsWordStats() {
+    const films = await this.prisma.films.findMany();
+    let txt = '';
+    for (const film of films) {
+      txt += film.opening_crawl;
+    }
+
+    const wordList = words(toLower(txt));
+    const wordCounts = countBy(wordList);
+    const uniqueWordsWithCount = map(wordCounts, (count, word) => ({
+      word,
+      count,
+    }));
+
+    return uniqueWordsWithCount as FilmOpeningsWordStats[];
   }
 }

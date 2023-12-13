@@ -82,8 +82,11 @@ export class FilmsModel {
   edited: string;
 }
 
-@ObjectType()
-export class FilmsModelWithPagination {
-  @Field(() => [FilmsModel])
-  films: FilmsModel[];
+@ObjectType({ description: 'stats for film opeining words in all films' })
+export class FilmOpeningsWordStats {
+  @Field(() => String, { nullable: true })
+  word: string;
+
+  @Field(() => Int, { nullable: true })
+  count: number;
 }

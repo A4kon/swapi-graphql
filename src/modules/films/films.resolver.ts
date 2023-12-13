@@ -1,5 +1,5 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { FilmsModel } from './films.model';
+import { FilmOpeningsWordStats, FilmsModel } from './films.model';
 import { ListFilmsInput } from './films.input';
 import { FilmsService } from './films.service';
 
@@ -17,5 +17,9 @@ export class FilmsResolver {
   @Query(() => FilmsModel)
   async getFilmById(@Args('id') id: number): Promise<FilmsModel> {
     return await this.filmsService.getFilmById(id);
+  }
+  @Query(() => [FilmOpeningsWordStats])
+  async getFilmOpeningsWordStats(): Promise<FilmOpeningsWordStats[]> {
+    return await this.filmsService.getFilmOpeningsWordStats();
   }
 }
