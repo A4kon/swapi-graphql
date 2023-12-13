@@ -13,7 +13,6 @@ services:
       - 3000
     depends_on:
       - database
-      - redis
     env_file:
       - .env
     environment:
@@ -24,10 +23,6 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_USER=${DB_USER}
       - DB_DATABASE=${DB_DATABASE}
-      - REDIS_HOST=redis
-      - REDIS_USERNAME=${REDIS_USERNAME}
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - REDIS_PORT=6379
       - DATABASE_URL=${DATABASE_DOCKER_URL}
       - SHADOW_DATABASE_URL=${SHADOW_DATABASE_DOCKER_URL}
   database:
@@ -40,18 +35,7 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_DB=${DB_DATABASE}
     volumes:
-      - swapi-graphql-postgres:/var/lib/postgresql/data
-  redis:
-    image: redis
-    restart: on-failure
-    ports:
-      - ${REDIS_PORT}:6379
-    environment:
-      REDIS_USERNAME: ${REDIS_USERNAME}
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-    volumes:
-      - swapi-graphql-redis:/data      
+      - swapi-graphql-postgres:/var/lib/postgresql/data     
 
 volumes:
-  swapi-graphql-postgres:
-  swapi-graphql-redis:      
+  swapi-graphql-postgres:   
