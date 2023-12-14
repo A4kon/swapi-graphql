@@ -18,4 +18,9 @@ export class PeopleResolver {
   async getPersonById(@Args('id') id: number): Promise<PeopleModel> {
     return await this.peopleService.getPersonById(id);
   }
+
+  @Query(() => String)
+  async getMostFamousCharacterInOpeningCrawl(): Promise<string> {
+    return await this.peopleService.getMostFamousCharacterInOpeningCrawl();
+  }
 }

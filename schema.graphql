@@ -5,7 +5,7 @@
 """A Film resource is a single film."""
 type FilmsModel {
   """The ID of the film."""
-  id: ID!
+  id: Int!
 
   """The title of this film."""
   title: String!
@@ -58,10 +58,346 @@ type FilmOpeningsWordStats {
   count: Int
 }
 
+"""The Planet type represents information about a celestial body."""
+type PlanetsModel {
+  """The unique identifier for the planet."""
+  id: Int!
+
+  """The name of the planet."""
+  name: String!
+
+  """The diameter of the planet in kilometers."""
+  diameter: String!
+
+  """
+  The number of standard hours it takes for the planet to complete a single rotation on its axis.
+  """
+  rotation_period: String!
+
+  """
+  The number of standard days it takes for the planet to complete a single orbit of its local star.
+  """
+  orbital_period: String!
+
+  """
+  A number denoting the gravity of the planet, where "1" is normal or 1 standard G. "2" is twice or 2 standard Gs. "0.5" is half or 0.5 standard Gs.
+  """
+  gravity: String!
+
+  """The average population of sentient beings inhabiting the planet."""
+  population: String!
+
+  """The climate of the planet. Comma separated if diverse."""
+  climate: String!
+
+  """The terrain of the planet. Comma separated if diverse."""
+  terrain: String!
+
+  """
+  The percentage of the planet surface that is naturally occurring water or bodies of water.
+  """
+  surface_water: String!
+
+  """An array of People URL Resources that live on this planet."""
+  residents: [String!]!
+
+  """An array of Film URL Resources that this planet has appeared in."""
+  films: [String!]!
+
+  """The hypermedia URL of this resource."""
+  url: String!
+
+  """The date string format of the time that this resource was created."""
+  created: String!
+
+  """The date string format of the time that this resource was edited."""
+  edited: String!
+}
+
+"""
+The Starship type represents information about a starship in the Star Wars universe.
+"""
+type StarshipsModel {
+  """The unique identifier for the starship."""
+  id: Int!
+
+  """The name of the starship. The common name, such as "Death Star"."""
+  name: String!
+
+  """
+  The model or official name of the starship. Such as "T-65 X-wing" or "DS-1 Orbital Battle Station".
+  """
+  model: String!
+
+  """
+  The class of the starship, such as "Starfighter" or "Deep Space Mobile Battlestation".
+  """
+  starship_class: String!
+
+  """The manufacturer of the starship. Comma separated if more than one."""
+  manufacturer: String!
+
+  """The cost of the starship new, in galactic credits."""
+  cost_in_credits: String!
+
+  """The length of the starship in meters."""
+  length: String!
+
+  """The number of personnel needed to run or pilot the starship."""
+  crew: String!
+
+  """The number of non-essential people the starship can transport."""
+  passengers: String!
+
+  """
+  The maximum speed of the starship in the atmosphere. "N/A" if the starship is incapable of atmospheric flight.
+  """
+  max_atmosphering_speed: String!
+
+  """The class of the starship's hyperdrive."""
+  hyperdrive_rating: String!
+
+  """
+  The Maximum number of Megalights this starship can travel in a standard hour.
+  """
+  MGLT: String!
+
+  """The maximum number of kilograms that this starship can transport."""
+  cargo_capacity: String!
+
+  """
+  The maximum length of time that this starship can provide consumables for its entire crew without having to resupply.
+  """
+  consumables: String
+
+  """An array of Film URL Resources that this starship has appeared in."""
+  films: [String!]!
+
+  """
+  An array of People URL Resources that this starship has been piloted by.
+  """
+  pilots: [String!]!
+
+  """The hypermedia URL of this resource."""
+  url: String!
+
+  """
+  The date string date format of the time that this resource was created.
+  """
+  created: String!
+
+  """The date string format of the time that this resource was edited."""
+  edited: String!
+}
+
+"""
+The Species type represents information about a species in the Star Wars universe.
+"""
+type SpeciesModel {
+  """The unique identifier for the species."""
+  id: Int!
+
+  """The name of the species."""
+  name: String!
+
+  """The classification of the species, such as "mammal" or "reptile"."""
+  classification: String!
+
+  """The designation of the species, such as "sentient"."""
+  designation: String!
+
+  """The average height of the species in centimeters."""
+  average_height: String!
+
+  """The average lifespan of the species in years."""
+  average_lifespan: String!
+
+  """
+  A comma-separated string of common eye colors for the species, "none" if the species does not typically have eyes.
+  """
+  eye_colors: String!
+
+  """
+  A comma-separated string of common hair colors for the species, "none" if the species does not typically have hair.
+  """
+  hair_colors: String!
+
+  """
+  A comma-separated string of common skin colors for the species, "none" if the species does not typically have skin.
+  """
+  skin_colors: String!
+
+  """The language commonly spoken by the species."""
+  language: String!
+
+  """
+  The URL of a planet resource, a planet that this species originates from.
+  """
+  homeworld: String!
+
+  """An array of People URL Resources that are a part of this species."""
+  people: [String!]!
+
+  """An array of Film URL Resources that this species has appeared in."""
+  films: [String!]!
+
+  """The hypermedia URL of this resource."""
+  url: String!
+
+  """The date string format of the time that this resource was created."""
+  created: String!
+
+  """The date string format of the time that this resource was edited."""
+  edited: String!
+}
+
+"""
+The Vehicle type represents information about a vehicle in the Star Wars universe.
+"""
+type VehiclesModel {
+  """The unique identifier for the vehicle."""
+  id: ID!
+
+  """
+  The name of the vehicle. The common name, such as "Sand Crawler" or "Speeder bike".
+  """
+  name: String!
+
+  """
+  The model or official name of the vehicle. Such as "All-Terrain Attack Transport".
+  """
+  model: String!
+
+  """The class of the vehicle, such as "Wheeled" or "Repulsorcraft"."""
+  vehicle_class: String!
+
+  """The manufacturer of the vehicle. Comma separated if more than one."""
+  manufacturer: String!
+
+  """The length of the vehicle in meters."""
+  length: String!
+
+  """The cost of the vehicle new, in Galactic Credits."""
+  cost_in_credits: String!
+
+  """The number of personnel needed to run or pilot the vehicle."""
+  crew: String!
+
+  """The number of non-essential people the vehicle can transport."""
+  passengers: String!
+
+  """The maximum speed of the vehicle in the atmosphere."""
+  max_atmosphering_speed: String!
+
+  """The maximum number of kilograms that this vehicle can transport."""
+  cargo_capacity: String!
+
+  """
+  The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply.
+  """
+  consumables: String
+
+  """An array of Film URL Resources that this vehicle has appeared in."""
+  films: [String!]!
+
+  """
+  An array of People URL Resources that this vehicle has been piloted by.
+  """
+  pilots: [String!]!
+
+  """The hypermedia URL of this resource."""
+  url: String!
+
+  """
+  The date string date format of the time that this resource was created.
+  """
+  created: String!
+
+  """The date string format of the time that this resource was edited."""
+  edited: String!
+}
+
+"""
+The Person type represents information about a person in the Star Wars universe.
+"""
+type PeopleModel {
+  """The unique identifier for the person."""
+  id: Int!
+
+  """The name of the person."""
+  name: String!
+
+  """
+  The birth year of the person, using the in-universe standard of BBY or ABY - Before the Battle of Yavin or After the Battle of Yavin.
+  """
+  birth_year: String!
+
+  """
+  The eye color of this person. Will be "unknown" if not known or "n/a" if the person does not have an eye.
+  """
+  eye_color: String!
+
+  """
+  The gender of this person. Either "Male", "Female" or "unknown", "n/a" if the person does not have a gender.
+  """
+  gender: String!
+
+  """
+  The hair color of this person. Will be "unknown" if not known or "n/a" if the person does not have hair.
+  """
+  hair_color: String!
+
+  """The height of the person in centimeters."""
+  height: String!
+
+  """The mass of the person in kilograms."""
+  mass: String!
+
+  """The skin color of this person."""
+  skin_color: String!
+
+  """
+  The URL of a planet resource, a planet that this person was born on or inhabits.
+  """
+  homeworld: String!
+
+  """An array of film resource URLs that this person has been in."""
+  films: [String!]!
+
+  """An array of species resource URLs that this person belongs to."""
+  species: [String!]!
+
+  """An array of starship resource URLs that this person has piloted."""
+  starships: [String!]!
+
+  """An array of vehicle resource URLs that this person has piloted."""
+  vehicles: [String!]!
+
+  """The hypermedia URL of this resource."""
+  url: String!
+
+  """The date string format of the time that this resource was created."""
+  created: String!
+
+  """The date string format of the time that this resource was edited."""
+  edited: String!
+}
+
 type Query {
   updateCustomer(data: ListFilmsInput!): [FilmsModel!]!
   getFilmById(id: Int!): FilmsModel!
   getFilmOpeningsWordStats: [FilmOpeningsWordStats!]!
+  fetchPaginatedPlanets(data: ListPlanetsInput!): [PlanetsModel!]!
+  getPlanetById(id: Int!): PlanetsModel!
+  fetchPaginatedSpecies(data: ListSpeciesInput!): [SpeciesModel!]!
+  getSpeciesById(id: Int!): SpeciesModel!
+  fetchPaginatedStarships(data: ListStarshipsInput!): [StarshipsModel!]!
+  getStarshipById(id: Int!): StarshipsModel!
+  fetchPaginatedVehicles(data: ListVehiclesInput!): [VehiclesModel!]!
+  getVehicleById(id: Int!): VehiclesModel!
+  fetchPaginatedPeople(data: ListPeopleInput!): [PeopleModel!]!
+  getPersonById(id: Int!): PeopleModel!
+  getMostFamousCharacterInOpeningCrawl: String!
 }
 
 input ListFilmsInput {
@@ -73,4 +409,61 @@ input ListFilmsInput {
 
 input ListFilmsInputFieldsArguments {
   title: String
+}
+
+input ListPlanetsInput {
+  skip: Int!
+  take: Int!
+  cursor: String
+  where: ListPlanetsInputFieldsArguments
+}
+
+input ListPlanetsInputFieldsArguments {
+  name: String
+}
+
+input ListSpeciesInput {
+  skip: Int!
+  take: Int!
+  cursor: String
+  where: ListSpeciesInputFieldsArguments
+}
+
+input ListSpeciesInputFieldsArguments {
+  name: String
+}
+
+input ListStarshipsInput {
+  skip: Int!
+  take: Int!
+  cursor: String
+  where: ListStarshipsInputFieldsArguments
+}
+
+input ListStarshipsInputFieldsArguments {
+  name: String
+  model: String
+}
+
+input ListVehiclesInput {
+  skip: Int!
+  take: Int!
+  cursor: String
+  where: ListVehiclesInputFieldsArguments
+}
+
+input ListVehiclesInputFieldsArguments {
+  name: String
+  model: String
+}
+
+input ListPeopleInput {
+  skip: Int!
+  take: Int!
+  cursor: String
+  where: ListPeopleInputFieldsArguments
+}
+
+input ListPeopleInputFieldsArguments {
+  name: String
 }

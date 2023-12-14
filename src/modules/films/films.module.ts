@@ -8,5 +8,6 @@ import { CacheModule } from '@nestjs/cache-manager';
   // TODO: use redis
   imports: [CacheModule.register()],
   providers: [PrismaService, FilmsResolver, FilmsService],
+  exports: [FilmsService],
 })
 export class FilmsModule {}

@@ -39,13 +39,7 @@ export class FilmsService {
   }
 
   async getFilmOpeningsWordStats() {
-    const films = await this.prisma.films.findMany();
-    let txt = '';
-    for (const film of films) {
-      txt += film.opening_crawl;
-    }
-
-    const wordList = words(toLower(txt));
+    const wordList = await this.getAllWordsFromOpeningCrawl();
     const wordCounts = countBy(wordList);
     const uniqueWordsWithCount = map(wordCounts, (count, word) => ({
       word,
@@ -53,5 +47,15 @@ export class FilmsService {
     }));
 
     return uniqueWordsWithCount as FilmOpeningsWordStats[];
+  }
+
+  async getAllWordsFromOpeningCrawl() {
+    const films = await this.prisma.films.findMany();
+    let txt = '';
+    for (const film of films) {
+      txt += film.opening_crawl;
+    }
+
+    return words(toLower(txt));
   }
 }

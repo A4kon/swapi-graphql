@@ -1,10 +1,10 @@
-import { ObjectType, Field, ID } from '@nestjs/graphql';
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType({
   description: 'The Planet type represents information about a celestial body.',
 })
 export class PlanetsModel {
-  @Field(() => ID, { description: 'The unique identifier for the planet.' })
+  @Field(() => Int, { description: 'The unique identifier for the planet.' })
   id: number;
 
   @Field({ description: 'The name of the planet.' })

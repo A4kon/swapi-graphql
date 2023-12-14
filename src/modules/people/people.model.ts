@@ -1,11 +1,11 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType({
   description:
     'The Person type represents information about a person in the Star Wars universe.',
 })
 export class PeopleModel {
-  @Field(() => ID, { description: 'The unique identifier for the person.' })
+  @Field(() => Int, { description: 'The unique identifier for the person.' })
   id: number;
 
   @Field({ description: 'The name of the person.' })
