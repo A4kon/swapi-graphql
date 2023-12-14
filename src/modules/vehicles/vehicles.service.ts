@@ -21,8 +21,8 @@ export class VehiclesService {
       where,
     });
   }
-  async getStarshipById(id: number) {
-    const existsInCache = await this.cacheManager.get<string>(`sp-${id}`);
+  async getVehicleById(id: number) {
+    const existsInCache = await this.cacheManager.get<string>(`v-${id}`);
     if (existsInCache) {
       return JSON.parse(existsInCache);
     }
@@ -32,7 +32,7 @@ export class VehiclesService {
       },
     });
 
-    this.cacheManager.set(`sp-${id}`, JSON.stringify(data), DAY_IN_MS);
+    this.cacheManager.set(`v-${id}`, JSON.stringify(data), DAY_IN_MS);
     return data;
   }
 }

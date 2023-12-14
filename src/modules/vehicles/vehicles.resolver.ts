@@ -15,7 +15,7 @@ export class VehiclesResolver {
   }
 
   @Query(() => VehiclesModel)
-  async getStarshipById(@Args('id') id: number): Promise<VehiclesModel> {
-    return await this.vehiclesService.getStarshipById(id);
+  async getVehicleById(@Args('id') id: number): Promise<VehiclesModel> {
+    return await this.vehiclesService.getVehicleById(id);
   }
 }
