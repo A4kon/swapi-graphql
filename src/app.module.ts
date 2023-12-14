@@ -6,6 +6,7 @@ import { FilmsModule } from './modules/films/films.module';
 import { PlanetsModule } from './modules/planets/planets.module';
 import { StarshipsModule } from './modules/starships/starships.module';
 import { SpeciesModule } from './modules/species/species.module';
+import { VehiclesModule } from './modules/vehicles/vehicles.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { SpeciesModule } from './modules/species/species.module';
     PlanetsModule,
     SpeciesModule,
     StarshipsModule,
+    VehiclesModule,
   ],
   providers: [PrismaService],
 })

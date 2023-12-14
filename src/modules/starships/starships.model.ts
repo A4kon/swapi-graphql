@@ -94,13 +94,13 @@ export class StarshipsModel {
 
   @Field({
     description:
-      'The ISO 8601 date format of the time that this resource was created.',
+      'The date string date format of the time that this resource was created.',
   })
   created: string;
 
   @Field({
     description:
-      'The ISO 8601 date format of the time that this resource was edited.',
+      'The date string format of the time that this resource was edited.',
   })
   edited: string;
 }
