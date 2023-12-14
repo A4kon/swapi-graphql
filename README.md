@@ -1,3 +1,33 @@
+# Nest.js Swapi Wrapper With Graphql & Request Caching
+# With Docker:
+1. Build app ```docker-compose up```
+2. Run seed (not in dockerfile, because it will take to long to build) ```npx prisma db seed```
+
+# Locally:
+Warn: Use node 20!
+
+1.Install deps: ```pnpm i```
+
+2. Run migration ```npx prisma migrate dev```
+
+3. Run seed ```npx prisma db seed```
+
+4. Start app ```npm run start:dev```
+
+# Tests 
+Open cypress by running ```npm run cypress:open```
+
+# TODO:
+
+1. Integrate redis, just not to use in memory cache
+2. Write more E2E tests
+3. Write Unit tests for functions that returns , most used character name in opening crawl & for word counter
+4. Get rid of lodash (used just for faster delivery)
+5. Create Microservices (maybe use SST?)
+6. Add Ports & Hexagon for api fetching (then we can always switch api provider)
+7. Add relations in db (based on swapi ids)
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
