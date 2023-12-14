@@ -3,36 +3,36 @@ import { Inject, Injectable } from '@nestjs/common';
 import { DAY_IN_MS } from 'src/config/const';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
-import { ListPlanetsInput } from './planets.input';
+import { ListSpeciesInput } from './species.input';
 
 @Injectable()
-export class PlanetsService {
+export class SpeciesService {
   constructor(
     private readonly prisma: PrismaService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
-  async fetchPaginatedPlanets(params: ListPlanetsInput) {
+  async fetchPaginatedSpecies(params: ListSpeciesInput) {
     const { skip, take, cursor, where } = params;
 
-    return await this.prisma.planets.findMany({
+    return await this.prisma.species.findMany({
       skip,
       take,
       cursor,
       where,
     });
   }
-  async getPlanetById(id: number) {
-    const existsInCache = await this.cacheManager.get<string>(`p-${id}`);
+  async getSpeciesById(id: number) {
+    const existsInCache = await this.cacheManager.get<string>(`sp-${id}`);
     if (existsInCache) {
       return JSON.parse(existsInCache);
     }
-    const data = await this.prisma.planets.findUnique({
+    const data = await this.prisma.species.findUnique({
       where: {
         id,
       },
     });
 
-    this.cacheManager.set(`p-${id}`, JSON.stringify(data), DAY_IN_MS);
+    this.cacheManager.set(`sp-${id}`, JSON.stringify(data), DAY_IN_MS);
     return data;
   }
 }

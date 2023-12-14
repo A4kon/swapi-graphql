@@ -8,14 +8,14 @@ export class PlanetsResolver {
   constructor(private readonly planetsService: PlanetsService) {}
 
   @Query(() => [PlanetsModel])
-  async updateCustomer(
+  async fetchPaginatedPlanets(
     @Args('data') data: ListPlanetsInput,
   ): Promise<PlanetsModel[]> {
     return await this.planetsService.fetchPaginatedPlanets(data);
   }
 
   @Query(() => PlanetsModel)
-  async getFilmById(@Args('id') id: number): Promise<PlanetsModel> {
-    return await this.planetsService.getFilmById(id);
+  async getPlanetById(@Args('id') id: number): Promise<PlanetsModel> {
+    return await this.planetsService.getPlanetById(id);
   }
 }
